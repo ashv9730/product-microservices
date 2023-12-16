@@ -8,7 +8,7 @@ DBConn();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.get('/',(req,res) => {
-  res.send('hello from product')
+  res.send('hello from product hiiii')
 })
 app.use("/products", userRouter);
 
