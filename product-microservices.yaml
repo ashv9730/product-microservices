@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-microservices
+  namespace: product-microservices
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app-name: product-microservices
+  template:
+    metadata:
+      labels:
+        app-name: product-microservices
+    spec:
+      containers:
+      - name: product-microservices-apis
+        image: ashv9730/product-microservices:2
+        # imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-microservices-svc
+  namespace: product-microservices
+spec:
+  # type: NodePort
+  selector:
+    app-name: product-microservices
+  ports:
+  - port: 3000
+    # targetPort: 3000
+    
